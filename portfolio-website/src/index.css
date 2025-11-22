@@ -1,0 +1,27 @@
+section .container {
+  max-width: 800px !important;
+}
+
+.tech-icon {
+  width: 15px;
+  height: 15px;
+  font-size: 3rem;              /* size of the icons */
+}
+
+.tools {
+  font-size: 13px;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+.tools:hover {
+  transform: translateY(-3px); /* slight lift on hover */
+}
+
+.icon-size {
+  font-size: 2rem;      /* fs-2 (big) for mobile/sm */
+}
+
+@media (min-width: 576px) {
+  .icon-size {
+    font-size: 1.5rem;    /* fs-6 (small) for md+ */
+  }
+}
