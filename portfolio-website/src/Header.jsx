@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom'
+
 export default function Header({anchors, links}) {
   return (
-    <nav className="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
+    <nav className="base-background navbar navbar-expand-lg shadow-sm fixed-top">
       <div className="container" style={{maxWidth: "1000px"}}>
-        <a className="navbar-brand fw-bold" href="#" style={{color: "#005c9d"}}>revcodes</a>
+        <Link to="/" style={{ textDecoration: "none" }} className="navbar-brand fw-bold">revi.code</Link>
         <button 
           className="navbar-toggler" 
           type="button" 
@@ -12,7 +14,7 @@ export default function Header({anchors, links}) {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto d-flex gap-4">
             {anchors}
             {links}
           </ul>

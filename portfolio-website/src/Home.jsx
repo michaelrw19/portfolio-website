@@ -11,7 +11,7 @@ function Home() {
   const experiences = {
     "cr18": {
       "title": "Application Developer",
-      "period": "May 2025 - Present",
+      "period": "May 2025 - Present (Remote)",
       "company": "CR18 Delivery Service",
       "description": 'Built an end-to-end point-of-sale system for CR18 Delivery Service. Collaborated closely with the client to refine requirements, integrate feedback, and continuously add new features.',
       "achievements": ['Improved operational efficiency and reduced human error.', 'Added secure access control to increase security.', 'Integrated a receipt-printing feature.'],
@@ -19,18 +19,18 @@ function Home() {
       "skills": ['Problem Solving', 'Communication']
     },
     "wpy": {
-      "title": "Full Stack Developer Intern",
+      "title": "Full Stack Developer",
       "period": "Aug 2023 - Aug 2024",
-      "company": "WhoPlusYou",
+      "company": "WhoPlusYou - Internship",
       "description": 'Learned new frameworks quickly, helped maintain and improve a large web application, and collaborated with senior developers and QA engineers to deliver reliable updates.',
       "achievements": ['Built an end-to-end admin dashboard to manage projects.', 'Refactored several pages to improve consistency and maintainability.', 'Improved page load times by optimizing and simplifying database queries.'],
       "tools": ['HTML5', 'CSS3', 'JavaScript', 'Vue', 'PHP', 'Laravel', 'MySQL', 'Jira', 'GitHub', 'GitHub Actions', 'Sentry'],
       "skills": ['Problem Solving', 'Troubleshooting / Debugging', 'Communication']
     },
     "cibc": {
-      "title": "Application Developer Intern",
+      "title": "Application Developer",
       "period": "May 2022 - August 2022",
-      "company": "CIBC",
+      "company": "CIBC - Internship",
       "description": 'Gained exposure to TypeScript, Angular, Java, Spring Boot, Azure DevOps, and Docker. Improved test coverage with JUnit and supported daily Scrum stand-ups.',
       "achievements": [],
       "tools": ['HTML5', 'CSS3', 'TypeScript', 'Angular', 'Java', 'Spring Boot', 'JUnit', 'Azure DevOps', 'Docker'],
@@ -39,22 +39,55 @@ function Home() {
   }
   const skills = [
     {
-      "title": 'Languages',
-      "items": ['HTML5', 'CSS3', 'JavaScript', 'Python', 'SQL', 'TypeScript']
+      title: 'Languages',
+      items: [
+        ['HTML5', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'],
+        ['CSS3', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'],
+        ['JavaScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'],
+        ['Python', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'],
+        ['SQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg'],
+        ['TypeScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg']
+      ]
     },
+
     {
-      "title": 'Frameworks',
-      "items": ['Vue', 'React', 'Flask', 'Pandas', 'OpenPyXL', 'Node.js', 'Express', 'Bootstrap', 'Cypress']
+      title: 'Frameworks and Libraries',
+      items: [
+        ['Vue', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg'],
+        ['React', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'],
+        ['Flask', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg'],
+        ['Pandas', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg'],
+        ['OpenPyXL', ''], // no Devicon
+        ['Node.js', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'],
+        ['Express', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg'],
+        ['Bootstrap', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg'],
+        ['Cypress', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original.svg']
+      ]
     },
+
     {
-      "title": 'Tools',
-      "items": ['GitHub', 'Visual Studio Code', 'Jira', 'DB Browser', 'Chrome DevTools', 'Figma', 'Penpot']
+      title: 'Tools',
+      items: [
+        ['GitHub', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'],
+        ['Visual Studio Code', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg'],
+        ['Jira', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg'],
+        ['DB Browser', ''],
+        ['Chrome DevTools', ''],
+        ['Figma', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg'],
+        ['Penpot', '']
+      ]
     },
+
     {
-      "title": 'Databases',
-      "items": ['SQLite', 'MySQL', 'PostgreSQL']      
+      title: 'Databases',
+      items: [
+        ['SQLite', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg'],
+        ['MySQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'],
+        ['PostgreSQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg']
+      ]
     }
-  ]
+  ];
+
 
   return (
     <>
@@ -76,43 +109,50 @@ function Home() {
           </>
         }
       />
-      <section id="about" className="pt-5 mt-5">
+      <section id="about" className="first-section">
         <div className="container">
-          <h2 className="fw-bold mb-2">About Me</h2>
-          <div className="d-flex gap-4">
-            <img src={profilePicture} className="d-none d-lg-block rounded" style={{float: "left", maxWidth: "250px", height: "375px"}} alt="Graduation Photo"/>
+          <div className="d-flex gap-5">
+            <img src={profilePicture} className="d-none d-lg-block profile-picture" alt="Graduation Photo"/>
             <div>
-              <h3>Michael Revi Widianto</h3>
-              <p>
-                I’m a <span className='fw-bold'>Full-Stack Developer</span> who enjoys turning real business problems into simple, effective software. After graduating from Toronto Metropolitan University in 2025, I’ve been actively seeking full-time opportunities while <span className='fw-bold'>building custom tools for small businesses</span>—including point-of-sale systems, financial dashboards, and basic workflow automation solutions.
-              </p>
-              <div className="d-flex flex-column gap-2">
-                <a href="/Michael_Widianto_Resume.pdf" target="_blank" className="btn border text-white me-auto" style={{backgroundColor: "#97a1aa" }}>View My Resume</a>
-                <div>
-                  <a href="https://www.linkedin.com/in/michaelrw19/" target="_blank" style={{ color: "#0072B1" }} className='me-3 me-sm-2'>
-                    <i className="bi bi-linkedin icon-size"></i>
-                  </a>
-                  <a href="https://github.com/michaelrw19" target="_blank">
-                    <i className="bi bi-github text-black icon-size"></i>
-                  </a>
-                </div>
+              <div className='h2 d-flex flex-column' style={{fontFamily: "'FragmentMono-Reguler', sans-serif"}}>
+                <span>Elevating</span> 
+                <span>businesses through</span> 
+                <span className="text-decoration-underline" style={{fontFamily: "'FragmentMono-Italic', sans-serif"}}>problem solving</span>
               </div>
+              <p className='my-3'>
+                <span className='highlight-text'>Full-Stack Developer</span> who builds custom tools—including point-of-sale systems, financial dashboards, and basic workflow automations—to<span className='highlight-text'> help small businesses solve real problems.</span>
+              </p>
+              <div className="d-flex gap-3 align-items-end">
+                <a href="/Michael_Widianto_Resume.pdf" target="_blank" className="my-btn rounded-5 text-black gray-bg">View Resume</a>
+                <a href="#projects" className="my-btn text-white blue-bg">View My Work</a>
+              </div>
+              {/*
+              <div className="mt-2 d-flex gap-3 align-items-end">
+                <a href="https://www.linkedin.com/in/michaelrw19/" target="_blank" style={{ color: "#0072B1" }} >
+                  <i className="bi bi-linkedin icon-size"></i>
+                </a>
+                <a href="https://github.com/michaelrw19" target="_blank">
+                  <i className="bi bi-github text-black icon-size"></i>
+                </a>
+              </div>
+              */}
             </div>
           </div>
         </div>
       </section>
-      <section id="skills" className="pt-5">
+      <section id="skills" className="py-5">
         <div className="container">
-          <h2 className="fw-bold mb-2">Skills</h2>
-          <p className='text-secondary mt-0'>My technical expertise and tools I work with: </p>
+          <h2 className="fw-bold mb-3">Skills</h2>
+          <p className='gray-text mt-0'>My technical expertise and tools I work with: </p>
           <div className="row g-3">
             {skills.map((skill, _) => (
               <div className='col-12 col-sm-6' key={_}>
-                <div className='p-3 border rounded-3 h-100'>
+                <div className='h-100 p-3 shadow-md border rounded-3 bg-white'>
                   <h4 className='lh-1 text-center mb-3'>{skill.title}</h4>
                   <div className='d-flex flex-wrap gap-2'>
                     {skill.items.map((item, _) => (
-                      <span className='border rounded-4 px-2 py-1 lh-1 ' style={{fontSize: '13px'}} key={_}>{item}</span>
+                      /*<span className='pills rounded-4 px-2 py-1 lh-1 gray-bg gray-text' style={{fontSize: '13px'}} key={_}>{item}</span>*/
+                      <ToolBadge  key={_} customClass="pills border rounded-4 px-2 py-1 lh-1" src={item[1]} name={item[0]}/>
                     ))}
                   </div>
                 </div>
@@ -121,10 +161,10 @@ function Home() {
           </div>
         </div>
       </section>      
-      <section id="projects" className="pt-5">
+      <section id="projects" className="py-5">
         <div className="container">
-          <h2 className="fw-bold mb-2">Featured Works</h2>
-          <div className="card h-100 shadow-sm p-0 mb-4">
+          <h2 className="fw-bold mb-3">Featured Works</h2>
+          <div className="card h-100 shadow-md p-0 mb-4">
             <video 
               src={projectShowcase1}
               autoPlay loop muted playsInline
@@ -132,7 +172,7 @@ function Home() {
             ></video>
             <div className="card-body">
               <div className="card-title d-flex flex-column gap-2">
-                <h5 className="fw-bold m-sm-0">Cash Flow Dashboard</h5>
+                <h5 className="m-sm-0">Cash Flow Dashboard</h5>
                 <div className="d-flex flex-wrap gap-2 justify-content-start">
                   <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" name="HTML5"/>
                   <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" name="CSS3"/>
@@ -151,7 +191,7 @@ function Home() {
               </p>
             </div>
           </div>
-          <div className="card h-100 shadow-sm p-0">
+          <div className="card h-100 shadow-md p-0">
             <video 
               src={projectShowcase1}
               autoPlay loop muted playsInline
@@ -159,7 +199,7 @@ function Home() {
             ></video>
             <div className="card-body">
               <div className="card-title d-flex flex-column gap-2">
-                <h5 className="fw-bold m-sm-0">Point-Of-Sale Application</h5>
+                <h5 className="m-sm-0">Point-Of-Sale Application</h5>
                 <div className="d-flex flex-wrap gap-2 justify-content-start">
                   <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" name="HTML5"/>
                   <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" name="CSS3"/>
@@ -176,27 +216,23 @@ function Home() {
               </p>
             </div>
           </div>
-          <div className="mt-4 text-center">
-            <a href="portfolio.html" className="btn btn-primary">See More Projects</a>
+          <div className='mt-4 d-flex justify-content-center'>
+            <Link to="/portfolio" style={{ textDecoration: "none"}} className="my-btn blue-bg text-white">View More Projects</Link>
           </div>
         </div>
       </section>
-      <section id="experience" className="pt-5">
+      <section id="experience" className="py-5">
         <div className="container">
-          <h2 className="fw-bold mb-2">Work Experience</h2>
+          <h2 className="fw-bold mb-3">Work Experience</h2>
           <div className='d-flex gap-3 flex-sm-row flex-column'>
             <div className='d-flex flex-column gap-3' style={{minWidth: '250px'}}>
-              <ExperienceCard role="Application Developer" company="CR18 Delivery Service" period="May 2025 - Present" onClick={() => setExperience("cr18")} isSelected={experience == "cr18"}/>
-              <ExperienceCard role="Full Stack Developer" company="WhoPlusYou" period="Aug 2023 - Aug 2024" onClick={() => setExperience("wpy")} isSelected={experience == "wpy"}/>
-              <ExperienceCard role="Application Developer" company="CIBC" period="May 2022 - Aug 2022" onClick={() => setExperience("cibc")} isSelected={experience == "cibc"}/>
+              { Object.entries(experiences).map((data, _) => (
+                <ExperienceCard key={_} role={data[1].title} company={data[1].company} period={data[1].period} onClick={() => setExperience(data[0])} isSelected={experience == data[0]}/>
+              ))}
             </div>
-            <div className='flex-grow-1 border rounded-2 p-3'>
-              <div className='d-flex flex-column justify-content-between'>
-                <h5 className='m-0 fw-bold'>{experiences[experience].title}</h5>
-                <h6 className='text-secondary mt-1 mb-0'>{experiences[experience].period}</h6> {/* show on > sm */}
-              </div>
-              <h6 className='text-secondary my-1'>{experiences[experience].company}</h6>
-              <p className='my-3'>{experiences[experience].description}</p>
+            <div className='flex-grow-1 border rounded-2 p-3 bg-white gray-border shadow-md'>
+              <h6>Overview</h6>
+              <p className='my-2'>{experiences[experience].description}</p>
               { experiences[experience].achievements.length > 0 ? (
                 <div>
                   <h6>Key achievements</h6>
@@ -210,10 +246,10 @@ function Home() {
                 </div>
               ) : null }
               <div>
-                <h6>Tools and Skills</h6>
+                <h6>Skills and Tools</h6>
                 <div className='d-flex flex-wrap gap-2'>
                   {experiences[experience].tools.map((item, _) => (
-                    <span className='border rounded-4 px-2 py-1 lh-1' style={{fontSize: '13px'}} key={_}>{item}</span>
+                    <span className={`rounded-4 px-2 py-1 lh-1 ${1 ? 'gray-bg gray-text' : 'border'}`} style={{fontSize: '13px'}} key={_}>{item}</span>
                   ))}
                 </div>
               </div>
@@ -224,7 +260,7 @@ function Home() {
       <section id="contact" className="py-5">
         <div className="container">
           <h2 className="fw-bold mb-2 text-center">Contact Me</h2>
-          <p className="text-secondary">I often work with <span className='fw-bold'>small businesses</span>, helping turn everyday challenges into <span className='fw-bold'>simple digital tools</span>, but I'm always open to new projects of any scale. If you’d like to explore an idea, feel free to reach out—<span className='fw-bold'>I’d love to chat.</span></p>
+          <p>I often work with <span className='highlight-text'>small businesses</span>, helping turn everyday challenges into <span className='highlight-text'>simple digital tools</span>, but I'm always open to new projects of any scale. If you’d like to explore an idea, feel free to reach out—<span className='highlight-text'>I’d love to chat.</span></p>
           <form className="mx-auto">
             <div className="mb-3">
               <label className="form-label">Name</label>
@@ -238,13 +274,14 @@ function Home() {
               <label className="form-label">Message</label>
               <textarea className="form-control" name="message" rows="4" required></textarea>
             </div>
-            <button type="submit" className="btn btn-primary d-block mx-auto">Send Message</button>
+            <button className="mt-4 my-btn blue-bg text-white d-block mx-auto">Send Message</button>
           </form>
-          <div id="contactStatus" className="mt-3 text-center"></div>
         </div>
       </section>
-      <footer className="py-4 text-center bg-light">
-        <p className="mb-0">&copy; 2025 revcodes. All rights reserved.</p>
+      <footer className="py-4 text-center base-background border-top text-secondary">
+        <a  className='me-3 text-decoration-none text-secondary' href="https://linkedin.com/in/michaelrw19/" target="_blank">LinkedIn</a>
+        <a className="text-decoration-none text-secondary" href="https://github.com/michaelrw19" target="_blank">GitHub</a>
+        <p className="mt-1 mb-0">&copy; 2025 revi.code. All rights reserved.</p>
       </footer>
     </>
   )
