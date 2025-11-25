@@ -1,8 +1,9 @@
 import profilePicture from './assets/profile.jpg'
 import projectShowcase1 from './assets/test.mp4'
 import ExperienceCard from './ExperienceCard'
-import ToolBadge from './ToolBadge'
+import ToolPill from './ToolPill'
 import Header from './Header'
+import Footer from './Footer'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -110,9 +111,9 @@ function Home() {
         }
       />
       <section id="about" className="first-section">
-        <div className="container">
+        <div className="container container-mw">
           <div className="d-flex gap-5">
-            <img src={profilePicture} className="d-none d-lg-block profile-picture" alt="Graduation Photo"/>
+            <img src={profilePicture} className="d-none d-md-block profile-picture" alt="Graduation Photo"/>
             <div>
               <div className='h2 d-flex flex-column' style={{fontFamily: "'FragmentMono-Reguler', sans-serif"}}>
                 <span>Elevating</span> 
@@ -126,22 +127,12 @@ function Home() {
                 <a href="/Michael_Widianto_Resume.pdf" target="_blank" className="my-btn rounded-5 text-black gray-bg">View Resume</a>
                 <a href="#projects" className="my-btn text-white blue-bg">View My Work</a>
               </div>
-              {/*
-              <div className="mt-2 d-flex gap-3 align-items-end">
-                <a href="https://www.linkedin.com/in/michaelrw19/" target="_blank" style={{ color: "#0072B1" }} >
-                  <i className="bi bi-linkedin icon-size"></i>
-                </a>
-                <a href="https://github.com/michaelrw19" target="_blank">
-                  <i className="bi bi-github text-black icon-size"></i>
-                </a>
-              </div>
-              */}
             </div>
           </div>
         </div>
       </section>
       <section id="skills" className="py-5">
-        <div className="container">
+        <div className="container container-mw">
           <h2 className="fw-bold mb-3">Skills</h2>
           <p className='gray-text mt-0'>My technical expertise and tools I work with: </p>
           <div className="row g-3">
@@ -151,8 +142,7 @@ function Home() {
                   <h4 className='lh-1 text-center mb-3'>{skill.title}</h4>
                   <div className='d-flex flex-wrap gap-2'>
                     {skill.items.map((item, _) => (
-                      /*<span className='pills rounded-4 px-2 py-1 lh-1 gray-bg gray-text' style={{fontSize: '13px'}} key={_}>{item}</span>*/
-                      <ToolBadge  key={_} customClass="pills border rounded-4 px-2 py-1 lh-1" src={item[1]} name={item[0]}/>
+                      <ToolPill key={_} src={item[1]} name={item[0]}/>
                     ))}
                   </div>
                 </div>
@@ -162,7 +152,7 @@ function Home() {
         </div>
       </section>      
       <section id="projects" className="py-5">
-        <div className="container">
+        <div className="container container-mw">
           <h2 className="fw-bold mb-3">Featured Works</h2>
           <div className="card h-100 shadow-md p-0 mb-4">
             <video 
@@ -174,16 +164,16 @@ function Home() {
               <div className="card-title d-flex flex-column gap-2">
                 <h5 className="m-sm-0">Cash Flow Dashboard</h5>
                 <div className="d-flex flex-wrap gap-2 justify-content-start">
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" name="HTML5"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" name="CSS3"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" name="JavaScript"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" name="Vue"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" name="Python"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" name="Flask"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" name="Bootstrap"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" name="SQLite"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg" name="Electron"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" name="Figma"/>
+                  <ToolPill name="HTML5" show_anim={false}/>
+                  <ToolPill name="CSS3" show_anim={false}/>
+                  <ToolPill name="JavaScript" show_anim={false}/>
+                  <ToolPill name="Vue" show_anim={false}/>
+                  <ToolPill name="Python" show_anim={false}/>
+                  <ToolPill name="Flask" show_anim={false}/>
+                  <ToolPill name="Bootstrap" show_anim={false}/>
+                  <ToolPill name="SQLite" show_anim={false}/>
+                  <ToolPill name="Electron" show_anim={false}/>
+                  <ToolPill name="Figma" show_anim={false}/>
                 </div>
               </div>
               <p className="card-text">
@@ -201,14 +191,14 @@ function Home() {
               <div className="card-title d-flex flex-column gap-2">
                 <h5 className="m-sm-0">Point-Of-Sale Application</h5>
                 <div className="d-flex flex-wrap gap-2 justify-content-start">
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" name="HTML5"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" name="CSS3"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" name="JavaScript"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" name="Vue"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" name="Python"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" name="Flask"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" name="Bootstrap"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" name="SQLite"/>
+                  <ToolPill name="HTML5" show_anim={false}/>
+                  <ToolPill name="CSS3" show_anim={false}/>
+                  <ToolPill name="JavaScript" show_anim={false}/>
+                  <ToolPill name="Vue" show_anim={false}/>
+                  <ToolPill name="Python" show_anim={false}/>
+                  <ToolPill name="Flask" show_anim={false}/>
+                  <ToolPill name="Bootstrap" show_anim={false}/>
+                  <ToolPill name="SQLite" show_anim={false}/>
                 </div>
               </div>
               <p className="card-text">
@@ -222,7 +212,7 @@ function Home() {
         </div>
       </section>
       <section id="experience" className="py-5">
-        <div className="container">
+        <div className="container container-mw">
           <h2 className="fw-bold mb-3">Work Experience</h2>
           <div className='d-flex gap-3 flex-sm-row flex-column'>
             <div className='d-flex flex-column gap-3' style={{minWidth: '250px'}}>
@@ -249,7 +239,7 @@ function Home() {
                 <h6>Skills and Tools</h6>
                 <div className='d-flex flex-wrap gap-2'>
                   {experiences[experience].tools.map((item, _) => (
-                    <span className={`rounded-4 px-2 py-1 lh-1 ${1 ? 'gray-bg gray-text' : 'border'}`} style={{fontSize: '13px'}} key={_}>{item}</span>
+                    <span className='rounded-4 px-2 py-1 lh-1 gray-bg gray-text' style={{fontSize: '13px'}} key={_}>{item}</span>
                   ))}
                 </div>
               </div>
@@ -258,7 +248,7 @@ function Home() {
         </div>
       </section>
       <section id="contact" className="py-5">
-        <div className="container">
+        <div className="container container-mw">
           <h2 className="fw-bold mb-2 text-center">Contact Me</h2>
           <p>I often work with <span className='highlight-text'>small businesses</span>, helping turn everyday challenges into <span className='highlight-text'>simple digital tools</span>, but I'm always open to new projects of any scale. If you’d like to explore an idea, feel free to reach out—<span className='highlight-text'>I’d love to chat.</span></p>
           <form className="mx-auto">
@@ -278,11 +268,7 @@ function Home() {
           </form>
         </div>
       </section>
-      <footer className="py-4 text-center base-background border-top text-secondary">
-        <a  className='me-3 text-decoration-none text-secondary' href="https://linkedin.com/in/michaelrw19/" target="_blank">LinkedIn</a>
-        <a className="text-decoration-none text-secondary" href="https://github.com/michaelrw19" target="_blank">GitHub</a>
-        <p className="mt-1 mb-0">&copy; 2025 revi.code. All rights reserved.</p>
-      </footer>
+      <Footer/>
     </>
   )
 }

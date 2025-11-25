@@ -1,78 +1,184 @@
 import { Link } from 'react-router-dom'
-import ToolBadge from './ToolBadge'
+import PortfolioCard from './PortfolioCard'
+import ToolPill from './ToolPill'
 import Header from './Header'
+import Footer from './Footer'
+import { Modal } from 'react-bootstrap'
+import ark from './assets/ark.png'
+import pos from './assets/pos.png'
+import owl from './assets/owl.png'
+import p5 from './assets/p5fighter.png'
+
 import projectShowcase1 from './assets/test.mp4'
 
+import { useState } from 'react'
+
 function Portfolio() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [project, setProject] = useState("");
+  const projectInfo = {
+    "ark": {
+      src: projectShowcase1,
+      title: "Cash Flow Dashboard",
+      tools: [
+        "React",
+        "Electron",
+        "Node.js",
+        "Express",
+        "Prisma",
+        "SQLite",
+        "Chart.js"
+      ],
+      description:
+        "A desktop app built for Build With Ark to simplify financial tracking and give users a clear view of their cash flow.",
+      features: [
+        "Log income and expenses with a guided interface",
+        "Quarter-based financial breakdown",
+        "Automatic summaries showing revenue, spending, and net balance",
+        "Exportable transaction history",
+        "Data validation for cleaner records",
+        "Responsive and consistent UI design"
+      ]
+    },
+    "pos": {
+      src: projectShowcase1,
+      title: "Point-of-Sale Application",
+      tools: [
+        "Vue 3",
+        "Composition API",
+        "Flask",
+        "Python",
+        "SQLite",
+        "Electron",
+        "Bootstrap",
+        "ESC/POS"
+      ],
+      description:
+        "A desktop POS system designed for a delivery business to streamline order entry, pricing, driver assignment, and daily reporting.",
+      features: [
+        "Order creation with automatic delivery fee calculations",
+        "Driver assignment with collision-prevention logic",
+        "Support for cash, transfer, and mixed payments",
+        "Daily and monthly reporting with Excel export",
+        "Offline-first local SQLite database",
+        "User authentication and role-based permissions",
+        "ESC/POS thermal receipt printing"
+      ]
+    }
+  };
+
+
   return (
     <>
-      <Header 
-        links={
-          <>
-            <li className="nav-item ms-lg-5">
-              <Link to="/" style={{ textDecoration: "none" }} className="nav-link">Home</Link>
-            </li>
-          </>
-        }
-      />
-      <section id="projects" className="pt-5 mt-5">
-        <div className="container">
-          <h2 className="fw-bold mb-4">Featured Works</h2>
-          <div className="card h-100 shadow-sm p-0 mb-4">
-            <video 
-              src={projectShowcase1}
-              autoPlay loop muted playsInline
-              className="card-img-top"
-            ></video>
-            <div className="card-body">
-              <div className="card-title d-flex flex-column gap-2">
-                <h5 className="fw-bold m-sm-0">Cash Flow Dashboard</h5>
-                <div className="d-flex flex-wrap gap-2 justify-content-start">
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" name="HTML5"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" name="CSS3"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" name="JavaScript"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" name="Vue"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" name="Python"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" name="SQLite"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg" name="Electron"/>
-                </div>
-              </div>
-              <p className="card-text">
-                Built a desktop application for Build With Ark to track their revenue and expenses and instantly see whether they’re profitable. The app includes an easy-to-read dashboard with weekly, monthly, and quarterly views, plus simple forms to add transactions and export financial data to Excel.
-              </p>
+      <div className='vh-100 d-flex flex-column'>
+        <Header 
+          links={
+            <>
+              <li className="nav-item ms-lg-5">
+                <Link to="/" style={{ textDecoration: "none" }} className="nav-link">Home</Link>
+              </li>
+            </>
+          }
+        />
+        <section className="flex-grow-1 mt-5 py-5">
+          <div className="container px-4" style={{maxWidth: "1000px"}}>
+            <div className="row row-cols-1 row-cols-md-2 g-5">
+              <PortfolioCard 
+                src={ark}
+                title="Cash Flow Dashboard"
+                tags={['Freelance Work']}
+                description={
+                  <><p className="card-text">A desktop app built for <a className='fst-italic' href="https://buildwithark.ca/" target='_blank'>Build With Ark</a> to simplify financial tracking and give users a clear view of their cash flow.</p></>
+                }
+                buttons={
+                  <>
+                    <button className='btn btn-outline-primary rounded-2 me-2' onClick={() => {handleShow(); setProject('ark')}}>Learn More</button>
+                  </>
+                }
+              />            
+              <PortfolioCard 
+                src={pos}
+                title="Point-of-Sale Application"
+                tags={['Project']}
+                description={
+                  <><p className="card-text">A desktop POS system designed to streamline delivery order management.</p></>
+                }
+                buttons={
+                  <>
+                    <button className='btn btn-outline-primary rounded-2 me-2' onClick={() => {handleShow(); setProject('pos')}}>Learn More</button>
+                    <a className='btn btn-outline-dark rounded-2 me-2'><i className="bi bi-github"></i> Github</a>              
+                  </>
+                }
+              />              
+              <PortfolioCard 
+                src={owl}
+                title="UI/UX High Fidelity"
+                tags={['Coursework']}
+                description={
+                  <><p className="card-text">A full mobile redesign of <span className='fst-italic'>The Famous Owls of Minerva</span> website, focused on a cleaner interface and a smoother user experience.</p></>
+                }
+                buttons={
+                  <>
+                    <a className='btn btn-outline-primary rounded-2 me-2' href="https://design.penpot.app/#/view?file-id=14b4ef9d-aa9c-815a-8005-e6509449d37c&page-id=14b4ef9d-aa9c-815a-8005-e6509449d37d&section=interactions&index=0&interactions-mode=show&share-id=1379938b-a15b-8002-8005-fec66a81e5b6." target="_blank">View</a>
+                    <a className='btn btn-outline-dark rounded-2 me-2' href="https://github.com/michaelrw19/mobile-ui-ux" target="_blank"><i className="bi bi-github"></i> Github</a>              
+                  </>
+                }
+              />   
+              <PortfolioCard 
+                src={p5}
+                title="p5 Fighter"
+                tags={['Coursework']}
+                description={
+                  <><p className="card-text">A fast-paced 2D fighting game built with JavaScript and the p5play framework.</p></>
+                }
+                buttons={
+                  <>
+                    <a className='btn btn-outline-primary rounded-2 me-2' href="https://michaelrw19.github.io/p5-Fighter" target="_blank">Play</a>
+                    <a className='btn btn-outline-dark rounded-2' href="https://github.com/michaelrw19/p5-Fighter" target="_blank"><i className="bi bi-github"></i> GitHub</a>                  
+                  </>
+                }
+              />
             </div>
           </div>
-          <div className="card h-100 shadow-sm p-0">
+        </section>      
+        <Footer/>
+        <Modal show={show} onHide={handleClose} centered size="lg" className='p-4'>
+          <Modal.Header closeButton className='border-0'>
+            <Modal.Title>{projectInfo[project]?.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className='p-0'>
             <video 
-              src={projectShowcase1}
-              autoPlay loop muted playsInline
+              src={projectInfo[project]?.src}
+              controls muted loop disablePictureInPicture
+              controlsList='nodownload'
               className="card-img-top"
             ></video>
-            <div className="card-body">
-              <div className="card-title d-flex flex-column gap-2">
-                <h5 className="fw-bold m-sm-0">Point-Of-Sale Application</h5>
-                <div className="d-flex flex-wrap gap-2 justify-content-start">
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" name="HTML5"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" name="CSS3"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" name="JavaScript"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" name="Vue"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" name="Python"/>
-                  <ToolBadge src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" name="SQLite"/>
+            <div className='p-3'>
+              <p>{projectInfo[project]?.description}</p>
+              <div>
+                <span className='highlight-text'>Key features: </span>
+                <ul>
+                  { projectInfo[project]?.features.map((feature, _) => (
+                    <li key={_}>{feature}</li>
+                  )) }
+                </ul>
+              </div>
+              <div>
+                <span className='highlight-text'>Technologies: </span>
+                <div className="mt-1 d-flex flex-wrap gap-2 justify-content-start">
+                  { projectInfo[project]?.tools.map((tool, _) => (
+                    <ToolPill name={tool} show_anim={false} key={_}/>
+                  )) }
                 </div>
               </div>
-              <p className="card-text">
-                Created a desktop application that replaces handwritten receipts and manual tracking for a mineral water delivery business. The system manages daily orders, driver assignments, product pricing, supplier details, and automatically generates daily and monthly sales summaries.
-              </p>
             </div>
-          </div>
-          <div className="mt-4 text-center">
-            <a href="portfolio.html" className="btn btn-primary">See More Projects</a>
-          </div>
-        </div>
-      </section>      
-      <footer className="py-4 text-center bg-light">
-        <p className="mb-0">&copy; 2025 revcode. All rights reserved.</p>
-      </footer>
+          </Modal.Body>
+        </Modal>
+      </div>
     </>
   )
 }
