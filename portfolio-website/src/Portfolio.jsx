@@ -1,8 +1,8 @@
 import { useLocation, Link } from 'react-router-dom'
-import PortfolioCard from './PortfolioCard'
-import ToolPill from './ToolPill'
-import Header from './Header'
-import Footer from './Footer'
+import PortfolioCard from './components/PortfolioCard'
+import ToolPill from './components/ToolPill'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import { Modal } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
 // Assets
@@ -15,6 +15,8 @@ import owl from './assets/owl.png'
 import p5 from './assets/p5fighter.png'
 
 function Portfolio() {
+  window.scrollTo(0, 0);
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);

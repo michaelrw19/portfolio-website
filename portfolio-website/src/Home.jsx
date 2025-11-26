@@ -1,8 +1,8 @@
-import ExperienceCard from './ExperienceCard'
-import ToolPill from './ToolPill'
-import Header from './Header'
-import Footer from './Footer'
-import MyAlert from './MyAlert'
+import ExperienceCard from './components/ExperienceCard'
+import ToolPill from './components/ToolPill'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import MyAlert from './components/MyAlert'
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import HCaptcha from '@hcaptcha/react-hcaptcha';
@@ -12,6 +12,8 @@ import ark from './assets/ark/ark.png'
 import pos from './assets/pos/pos.png'
 
 function Home() {
+  window.scrollTo(0, 0);
+  
   const navigate = useNavigate();
   const triggerProjectModal = (key) => {
     navigate("/portfolio", { state: {project: key }});
