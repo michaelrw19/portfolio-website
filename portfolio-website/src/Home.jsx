@@ -98,28 +98,45 @@ function Home() {
     }
   ];
 
+  /*
   const [hCaptchaToken, setHCaptchaToken] = useState(null)
+  const [missingHCaptcha, setMissingHCaptcha] = useState(false)
   const onHCaptchaChange = (token) => {
+  console.log(token)
     setHCaptchaToken(token);
+    setMissingHCaptcha(false);
   };
+  */
 
+  const [alertStyle, setAlertStyle] = useState(null)
+  const [alertMsg, setAlertMsg] = useState('')
   const [success, setSuccess] = useState(null)
   const submitContactForm = async (e) => {
     e.preventDefault();
+    /*
+    if (hCaptchaToken == null) {
+      setMissingHCaptcha(true);
+      return;
+    }
+    */
     const formData = new FormData(e.target);
     formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
-    formData.append("h-captcha-response", hCaptchaToken);
+    //console.log(hCaptchaToken);
+    //formData.append("h-captcha-response", hCaptchaToken);
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       body: formData
     });
 
     const res = await response.json();
-    console.log(res);
     setSuccess(res.success);
-    if (success) {
+    setAlertMsg(res.message);
+    if (res.success) {
       e.target.reset();
-      hcaptchaRef.current.resetCaptcha();
+      //hcaptchaRef.current.resetCaptcha();
+      setAlertStyle('success');
+    } else {
+      setAlertStyle('warning');
     }
   }
 
@@ -291,20 +308,24 @@ function Home() {
               <label className="form-label">Message</label>
               <textarea className="form-control" name="message" rows="4" required></textarea>
             </div>
-            <div className='d-flex justify-content-center'>
+            {/*
+            <div className='d-flex flex-column align-items-center'>
               <HCaptcha
                 sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
                 reCaptchaCompat={false}
-                onVerify={onHCaptchaChange} 
+                onVerify={onHCaptchaChange}
               /> 
+              { missingHCaptcha ? (
+                <span className='fw-bold text-danger' style={{fontSize: "13px"}}>Please complete the hCaptcha before submitting.</span>
+              ) : null}
             </div>
+            */}
             <button className="mt-4 my-btn blue-bg text-white d-block mx-auto">Send Message</button>
           </form>
         </div>
       </section>
       <Footer/>
-      <MyAlert show={success === true} style="success" message="Message successfully sent!" onClose={() => {setSuccess(null)}}/>
-      <MyAlert show={success === false} style="warning" message="Unable to send message, please try again. If this issue continues please send the message to revicodewebsite@gmail.com." onClose={() => {setSuccess(null)}}/>
+      <MyAlert show={success !== null} style={alertStyle} message={alertMsg} onClose={() => {setSuccess(null)}}/>
     </>
   )
 }
