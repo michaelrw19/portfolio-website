@@ -102,7 +102,6 @@ function Home() {
   const [hCaptchaToken, setHCaptchaToken] = useState(null)
   const [missingHCaptcha, setMissingHCaptcha] = useState(false)
   const onHCaptchaChange = (token) => {
-  console.log(token)
     setHCaptchaToken(token);
     setMissingHCaptcha(false);
   };
@@ -121,7 +120,6 @@ function Home() {
     */
     const formData = new FormData(e.target);
     formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
-    //console.log(hCaptchaToken);
     //formData.append("h-captcha-response", hCaptchaToken);
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
