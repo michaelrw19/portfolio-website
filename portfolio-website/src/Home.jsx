@@ -12,8 +12,6 @@ import ark from './assets/ark/ark.png'
 import pos from './assets/pos/pos.png'
 
 function Home() {
-  window.scrollTo(0, 0);
-  
   const navigate = useNavigate();
   const triggerProjectModal = (key) => {
     navigate("/portfolio", { state: {project: key }});

@@ -15,8 +15,6 @@ import owl from './assets/owl.png'
 import p5 from './assets/p5fighter.png'
 
 function Portfolio() {
-  window.scrollTo(0, 0);
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
