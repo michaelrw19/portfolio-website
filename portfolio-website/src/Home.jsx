@@ -70,7 +70,7 @@ function Home() {
         ['Flask', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg'],
         ['Pandas', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg'],
         ['Node.js', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'],
-        ['Express', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg'],
+        ['Express.js', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg'],
         ['Cypress', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original.svg']
       ]
     },
@@ -84,7 +84,8 @@ function Home() {
         ['DB Browser', ''],
         ['Chrome DevTools', ''],
         ['Figma', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg'],
-        ['Penpot', '']
+        ['Penpot', ''],
+        ['ChatGPT', '']
       ]
     },
 
