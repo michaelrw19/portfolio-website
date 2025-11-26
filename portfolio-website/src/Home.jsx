@@ -1,13 +1,20 @@
-import profilePicture from './assets/profile.jpg'
-import projectShowcase1 from './assets/test.mp4'
 import ExperienceCard from './ExperienceCard'
 import ToolPill from './ToolPill'
 import Header from './Header'
 import Footer from './Footer'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+// Assets
+import profilePicture from './assets/profile.jpg'
+import ark from './assets/ark/ark.png'
+import pos from './assets/pos/pos.png'
 
 function Home() {
+  const navigate = useNavigate();
+  const triggerProjectModal = (key) => {
+    navigate("/portfolio", { state: {project: key }});
+  };
+
   const [experience, setExperience] = useState("cr18") 
   const experiences = {
     "cr18": {
@@ -155,38 +162,31 @@ function Home() {
         <div className="container container-mw">
           <h2 className="fw-bold mb-3">Featured Works</h2>
           <div className="card h-100 shadow-md p-0 mb-4">
-            <video 
-              src={projectShowcase1}
-              autoPlay loop muted playsInline
-              className="card-img-top"
-            ></video>
+            <img src={ark} className="card-img-top"/>
             <div className="card-body">
               <div className="card-title d-flex flex-column gap-2">
                 <h5 className="m-sm-0">Cash Flow Dashboard</h5>
                 <div className="d-flex flex-wrap gap-2 justify-content-start">
                   <ToolPill name="HTML5" show_anim={false}/>
                   <ToolPill name="CSS3" show_anim={false}/>
+                  <ToolPill name="Bootstrap" show_anim={false}/>
                   <ToolPill name="JavaScript" show_anim={false}/>
+                  <ToolPill name="Chart.js" show_anim={false}/>
                   <ToolPill name="Vue" show_anim={false}/>
                   <ToolPill name="Python" show_anim={false}/>
                   <ToolPill name="Flask" show_anim={false}/>
-                  <ToolPill name="Bootstrap" show_anim={false}/>
                   <ToolPill name="SQLite" show_anim={false}/>
                   <ToolPill name="Electron" show_anim={false}/>
-                  <ToolPill name="Figma" show_anim={false}/>
                 </div>
               </div>
               <p className="card-text">
-                Built a desktop application for Build With Ark to track their revenue and expenses and instantly see whether they’re profitable. The app includes an easy-to-read dashboard with weekly, monthly, and quarterly views, plus simple forms to add transactions and export financial data to Excel.
+                Built a desktop application for <a className='fst-italic' href="https://buildwithark.ca/" target='_blank'>Build With Ark</a> to track their revenue and expenses and instantly see whether they’re profitable. The app includes an easy-to-read dashboard with weekly, monthly, and quarterly views, plus simple forms to add transactions and export financial data to Excel.
               </p>
+              <button className="btn btn-outline-primary rounded-2" onClick={() => triggerProjectModal("ark")}>See Demo Video</button>
             </div>
           </div>
           <div className="card h-100 shadow-md p-0">
-            <video 
-              src={projectShowcase1}
-              autoPlay loop muted playsInline
-              className="card-img-top"
-            ></video>
+            <img src={pos} className="card-img-top"/>
             <div className="card-body">
               <div className="card-title d-flex flex-column gap-2">
                 <h5 className="m-sm-0">Point-Of-Sale Application</h5>
@@ -204,6 +204,7 @@ function Home() {
               <p className="card-text">
                 Created a desktop application that replaces handwritten receipts and manual tracking for a mineral water delivery business. The system manages daily orders, driver assignments, product pricing, supplier details, and automatically generates daily and monthly sales summaries.
               </p>
+              <button className="btn btn-outline-primary rounded-2" onClick={() => triggerProjectModal("pos")}>See Demo Video</button>
             </div>
           </div>
           <div className='mt-4 d-flex justify-content-center'>

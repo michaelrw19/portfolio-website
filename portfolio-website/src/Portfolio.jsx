@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import PortfolioCard from './PortfolioCard'
 import ToolPill from './ToolPill'
 import Header from './Header'
 import Footer from './Footer'
 import { Modal } from 'react-bootstrap'
-import ark from './assets/ark.png'
-import pos from './assets/pos.png'
+import { useEffect, useState } from 'react'
+// Assets
+import ark from './assets/ark/ark.png'
+import arkDemo from './assets/ark/arkDemo.mp4'
+import pos from './assets/pos/pos.png'
+import posDemo from './assets/pos/pos.mp4'
 import owl from './assets/owl.png'
 import p5 from './assets/p5fighter.png'
-
-import projectShowcase1 from './assets/test.mp4'
-
-import { useState } from 'react'
 
 function Portfolio() {
   const [show, setShow] = useState(false);
@@ -22,55 +22,68 @@ function Portfolio() {
   const [project, setProject] = useState("");
   const projectInfo = {
     "ark": {
-      src: projectShowcase1,
+      src: arkDemo,
       title: "Cash Flow Dashboard",
       tools: [
-        "React",
-        "Electron",
-        "Node.js",
-        "Express",
-        "Prisma",
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "Javascript",
+        "Chart.js",
+        "Vue",
+        "Python",
+        "Flask",
         "SQLite",
-        "Chart.js"
+        "Electron"
       ],
       description:
-        "A desktop app built for Build With Ark to simplify financial tracking and give users a clear view of their cash flow.",
+        "A desktop app made for Build With Ark to simplify financial tracking and give users a clear view of their cash flow.",
       features: [
-        "Log income and expenses with a guided interface",
-        "Quarter-based financial breakdown",
-        "Automatic summaries showing revenue, spending, and net balance",
-        "Exportable transaction history",
-        "Data validation for cleaner records",
-        "Responsive and consistent UI design"
+        "Log income and expenses with a simple guided workflow",
+        "Multiple viewing modes including weekly (1-7 or Mon-Sun), monthly, and quarterly (Calendar or Retail Year)",
+        "Automatic summaries of revenue, expenses, and net income",
+        "Customizable transaction categories and card accounts",
+        "Exportable transaction history for reports or backups",
+        "Responsive, consistent, and easy-to-use interface",
       ]
     },
     "pos": {
-      src: projectShowcase1,
+      src: posDemo,
       title: "Point-of-Sale Application",
       tools: [
-        "Vue 3",
-        "Composition API",
-        "Flask",
-        "Python",
-        "SQLite",
-        "Electron",
+        "HTML",
+        "CSS",
         "Bootstrap",
-        "ESC/POS"
+        "Javascript",
+        "Vue",
+        "Cypress",
+        "Python",
+        "Flask",
+        "Pandas",
+        "SQLite",
       ],
       description:
         "A desktop POS system designed for a delivery business to streamline order entry, pricing, driver assignment, and daily reporting.",
       features: [
-        "Order creation with automatic delivery fee calculations",
-        "Driver assignment with collision-prevention logic",
-        "Support for cash, transfer, and mixed payments",
-        "Daily and monthly reporting with Excel export",
-        "Offline-first local SQLite database",
-        "User authentication and role-based permissions",
-        "ESC/POS thermal receipt printing"
+        "Create and manage orders for various delivery types based on vehicle selection",
+        "Instantly generate sales summaries and driver delivery reports",
+        "Create and manage purchases (resupply) with automatic summaries",
+        "Export orders, purchases, and summaries to Excel",
+        "Manage users, price lists, customers, and drivers with assigned vehicles",
+        "Dynamic UI that adapts to user authentication and role-based permissions",
+        "15 minute AFK timer that will automatically logs out user",
+        "ESC/POS thermal receipt printing support"
       ]
     }
   };
 
+  const { state }= useLocation();
+  useEffect(() => {
+    if (state?.project) {
+      handleShow();
+      setProject(state.project);
+    }
+  }, [state]);
 
   return (
     <>
