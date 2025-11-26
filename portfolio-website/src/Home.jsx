@@ -129,13 +129,14 @@ function Home() {
 
     const res = await response.json();
     setSuccess(res.success);
-    setAlertMsg(res.message);
     if (res.success) {
       e.target.reset();
       //hcaptchaRef.current.resetCaptcha();
       setAlertStyle('success');
+      setAlertMsg(res.message);
     } else {
       setAlertStyle('warning');
+      setAlertMsg(`${res.message} If this issue continues, please contact revicodeswebsite@gmail.com instead`);
     }
   }
 
