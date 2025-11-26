@@ -10,6 +10,7 @@ import ark from './assets/ark/ark.png'
 import arkDemo from './assets/ark/arkDemo.mp4'
 import pos from './assets/pos/pos.png'
 import posDemo from './assets/pos/pos.mp4'
+import website from './assets/portfolio.png'
 import owl from './assets/owl.png'
 import p5 from './assets/p5fighter.png'
 
@@ -126,7 +127,21 @@ function Portfolio() {
                     <a className='btn btn-outline-dark rounded-2 me-2'><i className="bi bi-github"></i> Github</a>              
                   </>
                 }
-              />              
+              />
+              <PortfolioCard 
+                src={website}
+                title="Personal Website"
+                tags={['Project']}
+                description={
+                  <><p className="card-text">A responsive React website built with modern UI principles and deployed on Vercel.</p></>
+                }
+                buttons={
+                  <>
+                    <Link to="/" className="btn btn-outline-primary rounded-2 me-2">View</Link>
+                    <a className='btn btn-outline-dark rounded-2' href="https://github.com/michaelrw19/portfolio-website" target="_blank"><i className="bi bi-github"></i> Github</a> 
+                  </>
+                }                
+              />                              
               <PortfolioCard 
                 src={owl}
                 title="UI/UX High Fidelity"
@@ -137,7 +152,7 @@ function Portfolio() {
                 buttons={
                   <>
                     <a className='btn btn-outline-primary rounded-2 me-2' href="https://design.penpot.app/#/view?file-id=14b4ef9d-aa9c-815a-8005-e6509449d37c&page-id=14b4ef9d-aa9c-815a-8005-e6509449d37d&section=interactions&index=0&interactions-mode=show&share-id=1379938b-a15b-8002-8005-fec66a81e5b6." target="_blank">View</a>
-                    <a className='btn btn-outline-dark rounded-2 me-2' href="https://github.com/michaelrw19/mobile-ui-ux" target="_blank"><i className="bi bi-github"></i> Github</a>              
+                    <a className='btn btn-outline-dark rounded-2' href="https://github.com/michaelrw19/mobile-ui-ux" target="_blank"><i className="bi bi-github"></i> Github</a>              
                   </>
                 }
               />   
