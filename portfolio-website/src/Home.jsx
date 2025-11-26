@@ -2,8 +2,10 @@ import ExperienceCard from './ExperienceCard'
 import ToolPill from './ToolPill'
 import Header from './Header'
 import Footer from './Footer'
+import MyAlert from './MyAlert'
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 // Assets
 import profilePicture from './assets/profile.jpg'
 import ark from './assets/ark/ark.png'
@@ -96,6 +98,30 @@ function Home() {
     }
   ];
 
+  const [hCaptchaToken, setHCaptchaToken] = useState(null)
+  const onHCaptchaChange = (token) => {
+    setHCaptchaToken(token);
+  };
+
+  const [success, setSuccess] = useState(null)
+  const submitContactForm = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
+    formData.append("h-captcha-response", hCaptchaToken);
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const res = await response.json();
+    console.log(res);
+    setSuccess(res.success);
+    if (success) {
+      e.target.reset();
+      hcaptchaRef.current.resetCaptcha();
+    }
+  }
 
   return (
     <>
@@ -252,7 +278,7 @@ function Home() {
         <div className="container container-mw">
           <h2 className="fw-bold mb-2 text-center">Contact Me</h2>
           <p>I often work with <span className='highlight-text'>small businesses</span>, helping turn everyday challenges into <span className='highlight-text'>simple digital tools</span>, but I'm always open to new projects of any scale. If you’d like to explore an idea, feel free to reach out—<span className='highlight-text'>I’d love to chat.</span></p>
-          <form className="mx-auto">
+          <form className="mx-auto" onSubmit={submitContactForm}>
             <div className="mb-3">
               <label className="form-label">Name</label>
               <input type="text" className="form-control" name="name" required />
@@ -265,11 +291,20 @@ function Home() {
               <label className="form-label">Message</label>
               <textarea className="form-control" name="message" rows="4" required></textarea>
             </div>
+            <div className='d-flex justify-content-center'>
+              <HCaptcha
+                sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                reCaptchaCompat={false}
+                onVerify={onHCaptchaChange} 
+              /> 
+            </div>
             <button className="mt-4 my-btn blue-bg text-white d-block mx-auto">Send Message</button>
           </form>
         </div>
       </section>
       <Footer/>
+      <MyAlert show={success === true} style="success" message="Message successfully sent!" onClose={() => {setSuccess(null)}}/>
+      <MyAlert show={success === false} style="warning" message="Unable to send message, please try again. If this issue continues please send the message to revicodewebsite@gmail.com." onClose={() => {setSuccess(null)}}/>
     </>
   )
 }
