@@ -1,4 +1,4 @@
-# 🌐 Personal Portfolio — Michael Revi Widianto
+Personal Portfolio — revi.code
 
 This is my personal portfolio website built with **React** and styled with **Bootstrap**.  
 It showcases my featured projects, experience, and contact information.  
