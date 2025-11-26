@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
+import logo from './assets/logo.png'
 
 export default function Header({anchors, links}) {
   return (
     <nav className="base-background navbar navbar-expand-md shadow-sm fixed-top" style={{zIndex: 1}}>
       <div className="container" style={{maxWidth: "1000px"}}>
-        <Link to="/" style={{ textDecoration: "none" }} className="navbar-brand fw-bold">revi.code</Link>
+        <Link to="/" style={{ textDecoration: "none" }} className="navbar-brand">
+          <img src={logo} height={25}/>
+        </Link>
         <button 
           className="navbar-toggler" 
           type="button" 
