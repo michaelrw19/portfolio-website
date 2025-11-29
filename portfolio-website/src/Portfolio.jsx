@@ -1,111 +1,26 @@
 import { useLocation, Link } from 'react-router-dom'
 import PortfolioCard from './components/PortfolioCard'
-import ToolPill from './components/ToolPill'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import { Modal } from 'react-bootstrap'
+import ProjectModal from './components/ProjectModal'
 import { useEffect, useState } from 'react'
 // Assets
 import ark from './assets/ark/ark.png'
-import arkDemo from './assets/ark/arkdemo.mp4'
 import pos from './assets/pos/pos.png'
-import posDemo from './assets/pos/posdemo.mp4'
 import website from './assets/portfolio.png'
 import owl from './assets/owl.png'
 import p5 from './assets/p5fighter.png'
 
 function Portfolio() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const [project, setProject] = useState("");
-  const projectInfo = {
-    "ark": {
-      src: arkDemo,
-      title: "Cash Flow Dashboard",
-      tools: [
-        "HTML",
-        "CSS",
-        "Bootstrap",
-        "Javascript",
-        "Chart.js",
-        "Vue",
-        "Python",
-        "Flask",
-        "SQLite",
-        "Electron"
-      ],
-      description:
-        "A desktop app made for Build With Ark to simplify financial tracking and give users a clear view of their cash flow.",
-      features: [
-        "Log income and expenses with a simple guided workflow",
-        "Multiple viewing modes including weekly (1-7 or Mon-Sun), monthly, and quarterly (Calendar or Retail Year)",
-        "Automatic summaries of revenue, expenses, and net income",
-        "Customizable transaction categories and card accounts",
-        "Exportable transaction history for reports or backups",
-        "Responsive, consistent, and easy-to-use interface",
-      ]
-    },
-    "pos": {
-      src: posDemo,
-      title: "Point-of-Sale Application",
-      tools: [
-        "HTML",
-        "CSS",
-        "Bootstrap",
-        "Javascript",
-        "Vue",
-        "Cypress",
-        "Python",
-        "Flask",
-        "Pandas",
-        "SQLite",
-      ],
-      description:
-        "A desktop POS system designed for a delivery business to streamline order entry, pricing, driver assignment, and daily reporting.",
-      features: [
-        "Create and manage orders for various delivery types based on vehicle selection",
-        "Instantly generate sales summaries and driver delivery reports",
-        "Create and manage purchases (resupply) with automatic summaries",
-        "Export orders, purchases, and summaries to Excel",
-        "Manage users, price lists, customers, and drivers with assigned vehicles",
-        "Dynamic UI that adapts to user authentication and role-based permissions",
-        "15 minute AFK timer that will automatically logs out user",
-        "ESC/POS thermal receipt printing support"
-      ]
-    }
-  };
+  const [project, setProject] = useState(null);
 
   /* Listen to request from Home.jsx to open a modal for a project */
   const { state } = useLocation();
   useEffect(() => {
     if (state?.project) {
-      handleShow();
       setProject(state.project);
     }
   }, [state]);
-
-  // Close project modal using back button in mobile
-  useEffect(() => {
-    if (show) {
-      // Push a state so back button closes it
-      window.history.pushState({ dropdown: true }, "");
-    }
-    const handleBackButton = (event) => {
-      // If dropdown is open, close it instead of going back
-      if (show) {
-        handleClose();
-        event.preventDefault();
-      }
-    };
-
-    window.addEventListener("popstate", handleBackButton);
-    return () => {
-      window.removeEventListener("popstate", handleBackButton);
-    };
-  }, [show]);
 
   return (
     <>
@@ -131,7 +46,7 @@ function Portfolio() {
                 }
                 buttons={
                   <>
-                    <button className='btn btn-outline-primary rounded-2 me-2' onClick={() => {handleShow(); setProject('ark')}}>Learn More</button>
+                    <button className='btn btn-outline-primary rounded-2 me-2' onClick={() => {setProject('ark')}}>Learn More</button>
                   </>
                 }
               />            
@@ -144,7 +59,7 @@ function Portfolio() {
                 }
                 buttons={
                   <>
-                    <button className='btn btn-outline-primary rounded-2 me-2' onClick={() => {handleShow(); setProject('pos')}}>Learn More</button>
+                    <button className='btn btn-outline-primary rounded-2 me-2' onClick={() => {setProject('pos')}}>Learn More</button>
                     <a className='btn btn-outline-dark rounded-2' href="https://github.com/michaelrw19/Point-of-Sale-Demo" target="_blank"><i className="bi bi-github"></i> Github</a>              
                   </>
                 }
@@ -195,38 +110,7 @@ function Portfolio() {
           </div>
         </section>      
         <Footer/>
-        <Modal show={show} onHide={handleClose} centered size="lg" className='p-4'>
-          <Modal.Header closeButton className='border-0'>
-            <Modal.Title>{projectInfo[project]?.title}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className='p-0'>
-            <video 
-              src={projectInfo[project]?.src}
-              controls muted loop disablePictureInPicture
-              controlsList='nodownload'
-              className="card-img-top"
-            ></video>
-            <div className='p-3'>
-              <p>{projectInfo[project]?.description}</p>
-              <div>
-                <span className='highlight-text'>Key features: </span>
-                <ul>
-                  { projectInfo[project]?.features.map((feature, _) => (
-                    <li key={_}>{feature}</li>
-                  )) }
-                </ul>
-              </div>
-              <div>
-                <span className='highlight-text'>Technologies: </span>
-                <div className="mt-1 d-flex flex-wrap gap-2 justify-content-start">
-                  { projectInfo[project]?.tools.map((tool, _) => (
-                    <ToolPill name={tool} show_anim={false} key={_}/>
-                  )) }
-                </div>
-              </div>
-            </div>
-          </Modal.Body>
-        </Modal>
+        <ProjectModal project={project} setProject={setProject}/>
       </div>
     </>
   )

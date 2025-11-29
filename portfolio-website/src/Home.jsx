@@ -1,4 +1,5 @@
 import ExperienceCard from './components/ExperienceCard'
+import ProjectModal from './components/ProjectModal'
 import ToolPill from './components/ToolPill'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -13,9 +14,58 @@ import pos from './assets/pos/pos.png'
 
 function Home() {
   const navigate = useNavigate();
-  const triggerProjectModal = (key) => {
-    navigate("/portfolio", { state: {project: key }});
-  };
+
+  const skills = [
+    {
+      title: 'Languages',
+      items: [
+        ['HTML5', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'],
+        ['CSS3', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'],
+        ['JavaScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'],
+        ['Python', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'],
+        ['SQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg'],
+        ['TypeScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg']
+      ]
+    },
+
+    {
+      title: 'Frameworks and Libraries',
+      items: [
+        ['Vue', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg'],
+        ['React', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'],
+        ['Bootstrap', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg'],
+        ['ChartJS', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chartjs/chartjs-original.svg'],
+        ['Flask', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg'],
+        ['Pandas', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg'],
+        ['Node.js', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'],
+        ['Express.js', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg'],
+        ['Cypress', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original.svg']
+      ]
+    },
+    {
+      title: 'Tools',
+      items: [
+        ['GitHub', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'],
+        ['Visual Studio Code', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg'],
+        ['Jira', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg'],
+        ['DB Browser', ''],
+        ['Chrome DevTools', ''],
+        ['Figma', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg'],
+        ['Penpot', ''],
+        ['ChatGPT', '']
+      ]
+    },
+    {
+      title: 'Databases',
+      items: [
+        ['SQLite', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg'],
+        ['MySQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'],
+        ['PostgreSQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg']
+      ]
+    }
+  ];
+
+  const [project, setProject] = useState(null)
 
   const [experience, setExperience] = useState("cr18") 
   const experiences = {
@@ -47,57 +97,6 @@ function Home() {
       "skills": ['Problem Solving', 'Communication']
     },    
   }
-  const skills = [
-    {
-      title: 'Languages',
-      items: [
-        ['HTML5', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'],
-        ['CSS3', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'],
-        ['JavaScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'],
-        ['Python', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'],
-        ['SQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg'],
-        ['TypeScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg']
-      ]
-    },
-
-    {
-      title: 'Frameworks and Libraries',
-      items: [
-        ['Vue', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg'],
-        ['React', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'],
-        ['Bootstrap', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg'],
-        ['ChartJS', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chartjs/chartjs-original.svg'],
-        ['Flask', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg'],
-        ['Pandas', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg'],
-        ['Node.js', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'],
-        ['Express.js', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg'],
-        ['Cypress', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original.svg']
-      ]
-    },
-
-    {
-      title: 'Tools',
-      items: [
-        ['GitHub', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'],
-        ['Visual Studio Code', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg'],
-        ['Jira', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg'],
-        ['DB Browser', ''],
-        ['Chrome DevTools', ''],
-        ['Figma', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg'],
-        ['Penpot', ''],
-        ['ChatGPT', '']
-      ]
-    },
-
-    {
-      title: 'Databases',
-      items: [
-        ['SQLite', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg'],
-        ['MySQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'],
-        ['PostgreSQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg']
-      ]
-    }
-  ];
 
   /*
   const [hCaptchaToken, setHCaptchaToken] = useState(null)
@@ -225,7 +224,7 @@ function Home() {
               <p className="card-text">
                 Built a desktop application for <a className='fst-italic' href="https://buildwithark.ca/" target='_blank'>Build With Ark</a> to track their revenue and expenses and instantly see whether they’re profitable. The app includes an easy-to-read dashboard with weekly, monthly, and quarterly views, plus simple forms to add transactions and export financial data to Excel.
               </p>
-              <button className="btn btn-outline-primary rounded-2" onClick={() => triggerProjectModal("ark")}>See Demo Video</button>
+              <button className="btn btn-outline-primary rounded-2" onClick={() => setProject("ark")}>See Demo Video</button>
             </div>
           </div>
           <div className="card h-100 shadow-md p-0">
@@ -247,7 +246,7 @@ function Home() {
               <p className="card-text">
                 Created a desktop application that replaces handwritten receipts and manual tracking for a mineral water delivery business. The system manages daily orders, driver assignments, product pricing, supplier details, and automatically generates daily and monthly sales summaries.
               </p>
-              <button className="btn btn-outline-primary rounded-2" onClick={() => triggerProjectModal("pos")}>See Demo Video</button>
+              <button className="btn btn-outline-primary rounded-2" onClick={() => setProject("pos")}>See Demo Video</button>
             </div>
           </div>
           <div className='mt-4 d-flex justify-content-center'>
@@ -325,6 +324,7 @@ function Home() {
         </div>
       </section>
       <Footer/>
+      <ProjectModal project={project} setProject={setProject}/>
       <MyAlert show={success !== null} style={alertStyle} message={alertMsg} onClose={() => {setSuccess(null)}}/>
     </>
   )
