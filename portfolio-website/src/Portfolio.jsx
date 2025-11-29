@@ -60,7 +60,7 @@ function Portfolio() {
                 buttons={
                   <>
                     <button className='btn btn-outline-primary rounded-2 me-2' onClick={() => {setProject('pos')}}>Learn More</button>
-                    <a className='btn btn-outline-dark rounded-2' href="https://github.com/michaelrw19/Point-of-Sale-Demo" target="_blank"><i className="bi bi-github"></i> Github</a>              
+                    {/*<a className='btn btn-outline-dark rounded-2' href="https://github.com/michaelrw19/Point-of-Sale-Demo" target="_blank"><i className="bi bi-github"></i> Github</a>*/}              
                   </>
                 }
               />
@@ -74,7 +74,7 @@ function Portfolio() {
                 buttons={
                   <>
                     <Link to="/" className="btn btn-outline-primary rounded-2 me-2">View</Link>
-                    {/*<a className='btn btn-outline-dark rounded-2' href="https://github.com/michaelrw19/portfolio-website" target="_blank"><i className="bi bi-github"></i> Github</a>*/}
+                    <a className='btn btn-outline-dark rounded-2' href="https://github.com/michaelrw19/portfolio-website" target="_blank"><i className="bi bi-github"></i> Github</a>
                   </>
                 }                
               />                              
