@@ -6,7 +6,7 @@ import NotFound from "./components/NotFound";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <ScrollToTop/>
         <Routes>
           <Route path="/" element={<Home />} />
