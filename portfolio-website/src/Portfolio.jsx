@@ -78,13 +78,34 @@ function Portfolio() {
     }
   };
 
-  const { state }= useLocation();
+  /* Listen to request from Home.jsx to open a modal for a project */
+  const { state } = useLocation();
   useEffect(() => {
     if (state?.project) {
       handleShow();
       setProject(state.project);
     }
   }, [state]);
+
+  // Close project modal using back button in mobile
+  useEffect(() => {
+    if (show) {
+      // Push a state so back button closes it
+      window.history.pushState({ dropdown: true }, "");
+    }
+    const handleBackButton = (event) => {
+      // If dropdown is open, close it instead of going back
+      if (show) {
+        handleClose();
+        event.preventDefault();
+      }
+    };
+
+    window.addEventListener("popstate", handleBackButton);
+    return () => {
+      window.removeEventListener("popstate", handleBackButton);
+    };
+  }, [show]);
 
   return (
     <>
@@ -124,7 +145,7 @@ function Portfolio() {
                 buttons={
                   <>
                     <button className='btn btn-outline-primary rounded-2 me-2' onClick={() => {handleShow(); setProject('pos')}}>Learn More</button>
-                    <a className='btn btn-outline-dark rounded-2 me-2'><i className="bi bi-github"></i> Github</a>              
+                    <a className='btn btn-outline-dark rounded-2' href="https://github.com/michaelrw19/Point-of-Sale-Demo" target="_blank"><i className="bi bi-github"></i> Github</a>              
                   </>
                 }
               />
